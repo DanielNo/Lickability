@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        self.presentInitialScreen()
         // Override point for customization after application launch.
         return true
     }
@@ -39,6 +41,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+
+}
+
+extension AppDelegate{
+    func presentInitialScreen(){
+        let photosAPI = PhotosAPI()
+        let viewModel = PhotosVCViewModel()
+        let photosVC = PhotosViewController.init(viewModel: viewModel)
+        let navController = UINavigationController(rootViewController: photosVC)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = navController
+        self.window?.makeKeyAndVisible()
     }
 
 
