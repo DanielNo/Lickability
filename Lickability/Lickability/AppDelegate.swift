@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate{
     func presentInitialScreen(){
         let photosAPI = PhotosAPI()
-        let viewModel = PhotosVCViewModel()
+        let viewModel = PhotosVCViewModel(api: photosAPI)
         let photosVC = PhotosViewController.init(viewModel: viewModel)
         let navController = UINavigationController(rootViewController: photosVC)
         self.window = UIWindow(frame: UIScreen.main.bounds)
